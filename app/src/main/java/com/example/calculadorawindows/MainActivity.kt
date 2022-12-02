@@ -33,6 +33,7 @@ class MainActivity : ComponentActivity() {
 }
 
 
+
 @Preview(showSystemUi = true)
 @Composable
 private fun CalculadoraWindowsContent() {
@@ -47,60 +48,60 @@ private fun CalculadoraWindowsContent() {
         Row(modifier = Modifier
             .fillMaxWidth()
             .weight(0.66f)) {
-            BotonCalculadora(text = "MC", Modifier.weight(1f), color = Fondo)
-            BotonCalculadora(text = "MR", Modifier.weight(1f), color = Fondo)
-            BotonCalculadora(text = "M+", Modifier.weight(1f), color = Fondo)
-            BotonCalculadora(text = "M-", Modifier.weight(1f), color = Fondo)
-            BotonCalculadora(text = "MS", Modifier.weight(1f), color = Fondo)
-            BotonCalculadora(text = "M\u25BE", Modifier.weight(1f), color = Fondo)
+            BotonCalculadora(text = "MC", color = Fondo)
+            BotonCalculadora(text = "MR", color = Fondo)
+            BotonCalculadora(text = "M+", color = Fondo)
+            BotonCalculadora(text = "M-", color = Fondo)
+            BotonCalculadora(text = "MS", color = Fondo)
+            BotonCalculadora(text = "M\u25BE", color = Fondo)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
             .weight(1f)) {
-            BotonCalculadora(text = "%", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "CE", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "C", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "\u232B", Modifier.weight(1f), color = GrisOscuro)
+            BotonCalculadora(text = "%", color = GrisOscuro)
+            BotonCalculadora(text = "CE", color = GrisOscuro)
+            BotonCalculadora(text = "C", color = GrisOscuro)
+            BotonCalculadora(text = "\u232B", color = GrisOscuro)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
             .weight(1f)) {
-            BotonCalculadora(text = "1/x", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "x\u00B2", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "\u221A", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "/", Modifier.weight(1f), color = GrisOscuro)
+            BotonCalculadora(text = "1/x", color = GrisOscuro)
+            BotonCalculadora(text = "x\u00B2", color = GrisOscuro)
+            BotonCalculadora(text = "\u221A", color = GrisOscuro)
+            BotonCalculadora(text = "/", color = GrisOscuro)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
             .weight(1f)) {
-            BotonCalculadora(text = "7", Modifier.weight(1f))
-            BotonCalculadora(text = "8", Modifier.weight(1f))
-            BotonCalculadora(text = "9", Modifier.weight(1f))
-            BotonCalculadora(text = "X", Modifier.weight(1f), color = GrisOscuro)
+            BotonCalculadora(text = "7")
+            BotonCalculadora(text = "8")
+            BotonCalculadora(text = "9")
+            BotonCalculadora(text = "X", color = GrisOscuro)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
             .weight(1f)) {
-            BotonCalculadora(text = "4", Modifier.weight(1f))
-            BotonCalculadora(text = "5", Modifier.weight(1f))
-            BotonCalculadora(text = "6", Modifier.weight(1f))
-            BotonCalculadora(text = "-", Modifier.weight(1f), color = GrisOscuro)
+            BotonCalculadora(text = "4")
+            BotonCalculadora(text = "5")
+            BotonCalculadora(text = "6")
+            BotonCalculadora(text = "-", color = GrisOscuro)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
             .weight(1f)) {
-            BotonCalculadora(text = "1", Modifier.weight(1f))
-            BotonCalculadora(text = "2", Modifier.weight(1f))
-            BotonCalculadora(text = "3", Modifier.weight(1f))
-            BotonCalculadora(text = "+", Modifier.weight(1f), color = GrisOscuro)
+            BotonCalculadora(text = "1")
+            BotonCalculadora(text = "2")
+            BotonCalculadora(text = "3")
+            BotonCalculadora(text = "+", color = GrisOscuro)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
             .weight(1f)) {
-            BotonCalculadora(text = "+/-", Modifier.weight(1f))
-            BotonCalculadora(text = "0", Modifier.weight(1f))
-            BotonCalculadora(text = ",", Modifier.weight(1f))
-            BotonCalculadora(text = "=", Modifier.weight(1f), color = AzulIgual)
+            BotonCalculadora(text = "+/-")
+            BotonCalculadora(text = "0")
+            BotonCalculadora(text = ",")
+            BotonCalculadora(text = "=", color = AzulIgual)
         }
     }
 }
@@ -126,7 +127,8 @@ fun DisplayCalculadora(
 }
 
 @Composable
-fun BotonCalculadora(
+fun RowScope.BotonCalculadora(
+    // (1)
     text: String,
     modifier: Modifier = Modifier,
     color: Color = Negro,
@@ -137,6 +139,7 @@ fun BotonCalculadora(
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
+            .weight(1f)  // (1)
             .fillMaxSize()
             .border(width = 1.dp, color = Fondo)
             .background(color)
@@ -147,3 +150,16 @@ fun BotonCalculadora(
     }
 
 }
+
+
+/*
+(1)
+Para poder poner el peso dentro de la Box, necesitamos que este vaya a estar necesariamente dentro de
+un scope que permita pesos. En este caso, definimos BotonCalculadora como una función de extensión de
+la interfaz RowScope.
+https://stackoverflow.com/a/67209639/12270705
+
+Kotlin permite extender clases o interfaces sin necesidad de heredar de ellas. Simplemente de define
+una nueva función como perteneciente a la clase que se quiere extender. En este caso, extendemos
+RowScope añadiéndole una función nueva, pero que pertenecerá a esta interfaz.
+ */

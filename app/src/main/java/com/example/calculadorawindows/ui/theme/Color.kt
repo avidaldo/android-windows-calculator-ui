@@ -14,8 +14,8 @@ val Pink40 = Color(0xFF7D5260)
 val Fondo = Color(0xFF444444)
 val Negro = Color.Black
 val GrisOscuro = Color(0xFF333333)
+val ColorLetras = Color.White
 
 val AzulIgual = Color(0xFF071A83)
-val ColorLetras = Color.White
 
 // TODO: https://developer.android.com/jetpack/compose/resources#colors
