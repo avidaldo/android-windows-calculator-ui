@@ -127,7 +127,7 @@ fun DisplayCalculadora(
 }
 
 @Composable
-fun RowScope.BotonCalculadora(
+private fun RowScope.BotonCalculadora(
     // (1)
     text: String,
     modifier: Modifier = Modifier,
