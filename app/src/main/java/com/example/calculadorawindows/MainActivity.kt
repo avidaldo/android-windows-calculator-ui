@@ -44,63 +44,34 @@ private fun CalculadoraWindowsContent() {
     ) {
 
         DisplayCalculadora(Modifier.weight(3f))
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(0.66f)) {
-            BotonCalculadora(text = "MC", Modifier.weight(1f), color = Fondo)
-            BotonCalculadora(text = "MR", Modifier.weight(1f), color = Fondo)
-            BotonCalculadora(text = "M+", Modifier.weight(1f), color = Fondo)
-            BotonCalculadora(text = "M-", Modifier.weight(1f), color = Fondo)
-            BotonCalculadora(text = "MS", Modifier.weight(1f), color = Fondo)
-            BotonCalculadora(text = "M\u25BE", Modifier.weight(1f), color = Fondo)
+        Row(modifier = Modifier.fillMaxWidth()) {
+            BotonCalculadora(text = "AC", Modifier.weight(2f).aspectRatio(2f), color = GrisOscuro)
+            BotonCalculadora(text = "\u232B", Modifier.weight(1f).aspectRatio(1f), color = GrisOscuro)
+            BotonCalculadora(text = "/", Modifier.weight(1f).aspectRatio(1f), color = GrisOscuro)
         }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f)) {
-            BotonCalculadora(text = "%", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "CE", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "C", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "\u232B", Modifier.weight(1f), color = GrisOscuro)
-        }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f)) {
-            BotonCalculadora(text = "1/x", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "x\u00B2", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "\u221A", Modifier.weight(1f), color = GrisOscuro)
-            BotonCalculadora(text = "/", Modifier.weight(1f), color = GrisOscuro)
-        }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f)) {
+        Row(modifier = Modifier.fillMaxWidth()) {
             BotonCalculadora(text = "7", Modifier.weight(1f))
-            BotonCalculadora(text = "8", Modifier.weight(1f))
-            BotonCalculadora(text = "9", Modifier.weight(1f))
-            BotonCalculadora(text = "X", Modifier.weight(1f), color = GrisOscuro)
+            BotonCalculadora(text = "8", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = "9", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = "X", Modifier.weight(1f).aspectRatio(1f), color = GrisOscuro)
         }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f)) {
-            BotonCalculadora(text = "4", Modifier.weight(1f))
-            BotonCalculadora(text = "5", Modifier.weight(1f))
-            BotonCalculadora(text = "6", Modifier.weight(1f))
-            BotonCalculadora(text = "-", Modifier.weight(1f), color = GrisOscuro)
+        Row(modifier = Modifier.fillMaxWidth()) {
+            BotonCalculadora(text = "4", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = "5", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = "6", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = "-", Modifier.weight(1f).aspectRatio(1f), color = GrisOscuro)
         }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f)) {
-            BotonCalculadora(text = "1", Modifier.weight(1f))
-            BotonCalculadora(text = "2", Modifier.weight(1f))
-            BotonCalculadora(text = "3", Modifier.weight(1f))
-            BotonCalculadora(text = "+", Modifier.weight(1f), color = GrisOscuro)
+        Row(modifier = Modifier.fillMaxWidth()) {
+            BotonCalculadora(text = "1", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = "2", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = "3", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = "+", Modifier.weight(1f).aspectRatio(1f), color = GrisOscuro)
         }
-        Row(modifier = Modifier
-            .fillMaxWidth()
-            .weight(1f)) {
-            BotonCalculadora(text = "+/-", Modifier.weight(1f))
-            BotonCalculadora(text = "0", Modifier.weight(1f))
-            BotonCalculadora(text = ",", Modifier.weight(1f))
-            BotonCalculadora(text = "=", Modifier.weight(1f), color = AzulIgual)
+        Row(modifier = Modifier.fillMaxWidth()) {
+            BotonCalculadora(text = "+/-", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = "0", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = ",", Modifier.weight(1f).aspectRatio(1f))
+            BotonCalculadora(text = "=", Modifier.weight(1f).aspectRatio(1f), color = AzulIgual)
         }
     }
 }
@@ -137,7 +108,6 @@ fun BotonCalculadora(
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
-            .fillMaxSize()
             .border(width = 1.dp, color = Fondo)
             .background(color)
             .clickable { onClick() }
