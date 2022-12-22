@@ -1,24 +1,16 @@
 package com.example.calculadorawindows
 
 import android.os.Bundle
-import android.util.Log
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
-import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
-import androidx.compose.material3.Text
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
-import com.example.calculadorawindows.ui.theme.*
+import com.example.calculadorawindows.ui.theme.CalculadoraWindowsTheme
 
 class MainActivity : ComponentActivity() {
 
@@ -26,12 +18,13 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
-            CalculadoraWindowsContent()
+            CalculadoraWindowsTheme {
+                CalculadoraWindowsContent()
+            }
         }
     }
 
 }
-
 
 
 @Preview(showSystemUi = true)
@@ -40,7 +33,7 @@ private fun CalculadoraWindowsContent() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Fondo)
+            .background(MaterialTheme.colorScheme.onBackground)
             .padding(2.dp),
     ) {
 
@@ -48,28 +41,28 @@ private fun CalculadoraWindowsContent() {
         Row(modifier = Modifier
             .fillMaxWidth()
             .weight(0.66f)) {
-            BotonCalculadora(text = "MC", color = Fondo)
-            BotonCalculadora(text = "MR", color = Fondo)
-            BotonCalculadora(text = "M+", color = Fondo)
-            BotonCalculadora(text = "M-", color = Fondo)
-            BotonCalculadora(text = "MS", color = Fondo)
-            BotonCalculadora(text = "M\u25BE", color = Fondo)
+            BotonCalculadora(text = "MC", color = MaterialTheme.colorScheme.onBackground)
+            BotonCalculadora(text = "MR", color = MaterialTheme.colorScheme.onBackground)
+            BotonCalculadora(text = "M+", color = MaterialTheme.colorScheme.onBackground)
+            BotonCalculadora(text = "M-", color = MaterialTheme.colorScheme.onBackground)
+            BotonCalculadora(text = "MS", color = MaterialTheme.colorScheme.onBackground)
+            BotonCalculadora(text = "M\u25BE", color = MaterialTheme.colorScheme.onBackground)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
             .weight(1f)) {
-            BotonCalculadora(text = "%", color = GrisOscuro)
-            BotonCalculadora(text = "CE", color = GrisOscuro)
-            BotonCalculadora(text = "C", color = GrisOscuro)
-            BotonCalculadora(text = "\u232B", color = GrisOscuro)
+            BotonCalculadora(text = "%", color = MaterialTheme.colorScheme.secondary)
+            BotonCalculadora(text = "CE", color = MaterialTheme.colorScheme.secondary)
+            BotonCalculadora(text = "C", color = MaterialTheme.colorScheme.secondary)
+            BotonCalculadora(text = "\u232B", color = MaterialTheme.colorScheme.secondary)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
             .weight(1f)) {
-            BotonCalculadora(text = "1/x", color = GrisOscuro)
-            BotonCalculadora(text = "x\u00B2", color = GrisOscuro)
-            BotonCalculadora(text = "\u221A", color = GrisOscuro)
-            BotonCalculadora(text = "/", color = GrisOscuro)
+            BotonCalculadora(text = "1/x", color = MaterialTheme.colorScheme.secondary)
+            BotonCalculadora(text = "x\u00B2", color = MaterialTheme.colorScheme.secondary)
+            BotonCalculadora(text = "\u221A", color = MaterialTheme.colorScheme.secondary)
+            BotonCalculadora(text = "/", color = MaterialTheme.colorScheme.secondary)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
@@ -77,7 +70,7 @@ private fun CalculadoraWindowsContent() {
             BotonCalculadora(text = "7")
             BotonCalculadora(text = "8")
             BotonCalculadora(text = "9")
-            BotonCalculadora(text = "X", color = GrisOscuro)
+            BotonCalculadora(text = "X", color = MaterialTheme.colorScheme.secondary)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
@@ -85,7 +78,7 @@ private fun CalculadoraWindowsContent() {
             BotonCalculadora(text = "4")
             BotonCalculadora(text = "5")
             BotonCalculadora(text = "6")
-            BotonCalculadora(text = "-", color = GrisOscuro)
+            BotonCalculadora(text = "-", color = MaterialTheme.colorScheme.secondary)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
@@ -93,7 +86,7 @@ private fun CalculadoraWindowsContent() {
             BotonCalculadora(text = "1")
             BotonCalculadora(text = "2")
             BotonCalculadora(text = "3")
-            BotonCalculadora(text = "+", color = GrisOscuro)
+            BotonCalculadora(text = "+", color = MaterialTheme.colorScheme.secondary)
         }
         Row(modifier = Modifier
             .fillMaxWidth()
@@ -101,65 +94,10 @@ private fun CalculadoraWindowsContent() {
             BotonCalculadora(text = "+/-")
             BotonCalculadora(text = "0")
             BotonCalculadora(text = ",")
-            BotonCalculadora(text = "=", color = AzulIgual)
+            BotonCalculadora(text = "=", color = MaterialTheme.colorScheme.tertiary)
         }
     }
 }
 
-@Composable
-fun DisplayCalculadora(
-    modifier: Modifier,
-) {
-    Box(
-        modifier = modifier
-            .fillMaxSize()
-            .background(Fondo)
-            .padding(start = 20.dp, end = 20.dp, top = 40.dp, bottom = 20.dp),
-        contentAlignment = Alignment.BottomEnd,
-    )
-    {
-        Text(text = "0",
-            textAlign = TextAlign.End,
-            color = ColorLetras,
-            fontSize = 50.sp,
-            fontWeight = FontWeight.Bold)
-    }
-}
-
-@Composable
-fun RowScope.BotonCalculadora(
-    // (1)
-    text: String,
-    modifier: Modifier = Modifier,
-    color: Color = Negro,
-    onClick: () -> Unit = {
-        Log.d("---", text)
-    },
-) {
-    Box(
-        contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .weight(1f)  // (1)
-            .fillMaxSize()
-            .border(width = 1.dp, color = Fondo)
-            .background(color)
-            .clickable { onClick() }
-            .then(modifier)
-    ) {
-        Text(text = text, fontSize = 25.sp, color = ColorLetras)
-    }
-
-}
 
 
-/*
-(1)
-Para poder poner el peso dentro de la Box, necesitamos que este vaya a estar necesariamente dentro de
-un scope que permita pesos. En este caso, definimos BotonCalculadora como una función de extensión de
-la interfaz RowScope.
-https://stackoverflow.com/a/67209639/12270705
-
-Kotlin permite extender clases o interfaces sin necesidad de heredar de ellas. Simplemente de define
-una nueva función como perteneciente a la clase que se quiere extender. En este caso, extendemos
-RowScope añadiéndole una función nueva, pero que pertenecerá a esta interfaz.
- */
